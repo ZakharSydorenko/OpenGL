@@ -87,17 +87,17 @@ void transport(double vectX, double vectY) // метод для перемеще
 
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-    createKangaroo();
-    glutSwapBuffers();
+    glClear(GL_COLOR_BUFFER_BIT); // чистим экран
+    createKangaroo(); // создаем зверя
+    glutSwapBuffers(); // меняем буферы
 }
 
 void reshape(int w, int h) // метод для того, что бы изображение оставалось стабильным, если изменять размер экрана
 {
-    glViewport(0, 0, w, h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, w, 0, h);
+    glViewport(0, 0, w, h); // перестройка окна с другими размерами
+    glMatrixMode(GL_PROJECTION); // сообщает что команды относятся к проэкту
+    glLoadIdentity(); // считывает текущую матрицу
+    gluOrtho2D(0, w, 0, h); // определение проекции
     
 }
 
@@ -135,17 +135,17 @@ int main(int argc, char **argv)
 {
     initialize();
     
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowSize(windowWidth, windowHeight);
-    glutCreateWindow("Sydorenko");
-    glClearColor(0.4, 0.1, 0.4, 1.0);
+    glutInit(&argc, argv);// инизиализация glut
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA); // создаем 2 окна и цветовую гамму
+    glutInitWindowSize(windowWidth, windowHeight); // размер окна
+    glutCreateWindow("Sydorenko"); // title
+    glClearColor(0.4, 0.1, 0.4, 1.0); // фон
     
     glutReshapeFunc(reshape);
     
     glutSpecialFunc(move);
     glutDisplayFunc(display);
-    glutMainLoop();
+    glutMainLoop(); // бесконечный цыкл, который ждет команд
     
     erase();
 }
